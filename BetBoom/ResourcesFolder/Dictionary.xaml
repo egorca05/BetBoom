@@ -43,7 +43,7 @@
         <Setter Property="HorizontalContentAlignment" Value="Left"/>
         <Setter Property="Foreground" Value="Black"/>
         <Setter Property="Height" Value="50"/>
-        <Setter Property="BorderBrush" Value="Gold"/>
+        <Setter Property="BorderBrush" Value="DarkRed"/>
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="Background" Value="{x:Null}"/>
         <Setter Property="BorderThickness" Value="2"/>
@@ -58,7 +58,7 @@
         <Setter Property="HorizontalContentAlignment" Value="Left"/>
         <Setter Property="Foreground" Value="Black"/>
         <Setter Property="Height" Value="50"/>
-        <Setter Property="BorderBrush" Value="Gold"/>
+        <Setter Property="BorderBrush" Value="DarkRed"/>
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="Background" Value="{x:Null}"/>
         <Setter Property="BorderThickness" Value="2"/>
@@ -84,5 +84,64 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+    </Style>
+    <!--###########Кнопки головного меню###########-->
+    <Style TargetType="Button" x:Key="BtnMenuAdmin">
+        <Setter Property="FontFamily" Value="Roboto"/>
+        <Setter Property="FontSize" Value="24"/>
+        <Setter Property="Margin" Value="10"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="BorderStyle" CornerRadius="10"
+                            BorderBrush="DarkRed" BorderThickness="2"
+                            Background="{x:Null}">
+                        <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"
+                                          TextElement.FontFamily="Roboto"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Foreground" Value="White"/>
+    </Style>
+
+    <Style TargetType="Button" x:Key="BtnMenuAdminActive" BasedOn="{StaticResource BtnMenuAdmin}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="BorderStyle" CornerRadius="10"
+                            BorderBrush="Gold" BorderThickness="2"
+                            Background="{x:Null}">
+                        <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"
+                                          TextElement.FontFamily="Roboto"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!--////////////////////////////////////////////Списки////////////////////////////////////////////-->
+    <Style TargetType="DataGrid">
+        <Setter Property="Background" Value="Black"/>
+        <Setter Property="BorderBrush" Value="MediumPurple"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+        <Setter Property="RowBackground" Value="{x:Null}"/>
+        <Setter Property="HorizontalGridLinesBrush" Value="MediumPurple"/>
+        <Setter Property="VerticalGridLinesBrush" Value="MediumPurple"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Padding" Value="10"/>
+    </Style>
+    <Style TargetType="DataGridColumnHeader">
+        <Setter Property="Background" Value="#FF1D1D1D"/>
+        <Setter Property="FontFamily" Value="Roboto"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="Padding" Value="10"/>
     </Style>
 </ResourceDictionary>

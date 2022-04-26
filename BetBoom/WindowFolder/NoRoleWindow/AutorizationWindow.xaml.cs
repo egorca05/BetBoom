@@ -35,14 +35,14 @@ namespace BetBoom.WindowFolder.NoRoleWindow
                 try
                 {
                     var user = DBEntities.GetContext().User.FirstOrDefault
-                        (u => u.login == LoginTb.Text);
+                        (u => u.LoginUser == LoginTb.Text);
                     if (user == null)
                     {
                         MBClass.MBError("Пользователь не найден");
                         LoginTb.Focus();
                         return;
                     }
-                    if (user.Password != PasswordPB.Password)
+                    if (user.PasswodUser != PasswordPB.Password)
                     {
                         MBClass.MBError("Введен не правильный пароль");
                         PasswordPB.Focus();

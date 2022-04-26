@@ -17,13 +17,13 @@ namespace BetBoom.DataFolder
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Sport()
         {
-            this.Matches = new HashSet<Matches>();
+            this.Match = new HashSet<Match>();
         }
     
         public int IdSport { get; set; }
         public string NameSport { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Matches> Matches { get; set; }
+        public virtual ICollection<Match> Match { get; set; }
     }
 }

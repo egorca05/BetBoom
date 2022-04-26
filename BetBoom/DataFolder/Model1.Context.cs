@@ -32,11 +32,13 @@ namespace BetBoom.DataFolder
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Matches> Matches { get; set; }
+        public virtual DbSet<Match> Match { get; set; }
+        public virtual DbSet<Refills> Refills { get; set; }
         public virtual DbSet<Role> Role { get; set; }
         public virtual DbSet<Sport> Sport { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
-        public virtual DbSet<Teams> Teams { get; set; }
+        public virtual DbSet<TeamOne> TeamOne { get; set; }
+        public virtual DbSet<TeamTwo> TeamTwo { get; set; }
         public virtual DbSet<User> User { get; set; }
     }
 }

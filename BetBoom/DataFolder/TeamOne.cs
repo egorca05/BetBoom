@@ -12,16 +12,18 @@ namespace BetBoom.DataFolder
     using System;
     using System.Collections.Generic;
     
-    public partial class Matches
+    public partial class TeamOne
     {
-        public int Idmatches { get; set; }
-        public int IdTeam1 { get; set; }
-        public int IdTeam2 { get; set; }
-        public int IdSport { get; set; }
-        public decimal Price { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public TeamOne()
+        {
+            this.Match = new HashSet<Match>();
+        }
     
-        public virtual Sport Sport { get; set; }
-        public virtual Teams Teams { get; set; }
-        public virtual Teams Teams1 { get; set; }
+        public int IdTeamOne { get; set; }
+        public string NameTeamOne { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Match> Match { get; set; }
     }
 }

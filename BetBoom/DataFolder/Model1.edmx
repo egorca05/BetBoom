@@ -5,29 +5,37 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="Хранилище DBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Matches">
+        <EntityType Name="Match">
           <Key>
-            <PropertyRef Name="Idmatches" />
+            <PropertyRef Name="IdMatch" />
           </Key>
-          <Property Name="Idmatches" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="IdTeam1" Type="int" Nullable="false" />
-          <Property Name="IdTeam2" Type="int" Nullable="false" />
+          <Property Name="IdMatch" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdTeamOne" Type="int" Nullable="false" />
+          <Property Name="IdTeamTwo" Type="int" Nullable="false" />
           <Property Name="IdSport" Type="int" Nullable="false" />
-          <Property Name="Price" Type="decimal" Precision="7" Scale="2" Nullable="false" />
+          <Property Name="Coefficient" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Refills">
+          <Key>
+            <PropertyRef Name="IdRefills" />
+          </Key>
+          <Property Name="IdRefills" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdUser" Type="int" Nullable="false" />
+          <Property Name="Sum" Type="decimal" Precision="7" Scale="2" Nullable="false" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
             <PropertyRef Name="IdRole" />
           </Key>
           <Property Name="IdRole" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="NameRole" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="NameRole" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Sport">
           <Key>
             <PropertyRef Name="IdSport" />
           </Key>
           <Property Name="IdSport" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="NameSport" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="NameSport" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -39,56 +47,75 @@
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
-        <EntityType Name="Teams">
+        <EntityType Name="TeamOne">
           <Key>
-            <PropertyRef Name="IdTeams" />
+            <PropertyRef Name="IdTeamOne" />
           </Key>
-          <Property Name="IdTeams" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="NameTeams" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="IdTeamOne" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameTeamOne" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TeamTwo">
+          <Key>
+            <PropertyRef Name="IdTeamTwo" />
+          </Key>
+          <Property Name="IdTeamTwo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameTeamTwo" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="IdUser" />
           </Key>
           <Property Name="IdUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="login" Type="nvarchar" MaxLength="40" Nullable="false" />
-          <Property Name="Password" Type="nvarchar" MaxLength="40" Nullable="false" />
-          <Property Name="IdRole" Type="int" Nullable="false" />
+          <Property Name="LoginUser" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PasswodUser" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Balans" Type="decimal" Precision="7" Scale="2" Nullable="false" />
+          <Property Name="IdRole" Type="int" Nullable="false" />
         </EntityType>
-        <Association Name="FK_Matches_Sport">
+        <Association Name="FK_Match_Sport">
           <End Role="Sport" Type="Self.Sport" Multiplicity="1" />
-          <End Role="Matches" Type="Self.Matches" Multiplicity="*" />
+          <End Role="Match" Type="Self.Match" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Sport">
               <PropertyRef Name="IdSport" />
             </Principal>
-            <Dependent Role="Matches">
+            <Dependent Role="Match">
               <PropertyRef Name="IdSport" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Matches_Teams">
-          <End Role="Teams" Type="Self.Teams" Multiplicity="1" />
-          <End Role="Matches" Type="Self.Matches" Multiplicity="*" />
+        <Association Name="FK_Match_TeamOne">
+          <End Role="TeamOne" Type="Self.TeamOne" Multiplicity="1" />
+          <End Role="Match" Type="Self.Match" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Teams">
-              <PropertyRef Name="IdTeams" />
+            <Principal Role="TeamOne">
+              <PropertyRef Name="IdTeamOne" />
             </Principal>
-            <Dependent Role="Matches">
-              <PropertyRef Name="IdTeam1" />
+            <Dependent Role="Match">
+              <PropertyRef Name="IdTeamOne" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Matches_Teams1">
-          <End Role="Teams" Type="Self.Teams" Multiplicity="1" />
-          <End Role="Matches" Type="Self.Matches" Multiplicity="*" />
+        <Association Name="FK_Match_TeamTwo">
+          <End Role="TeamTwo" Type="Self.TeamTwo" Multiplicity="1" />
+          <End Role="Match" Type="Self.Match" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Teams">
-              <PropertyRef Name="IdTeams" />
+            <Principal Role="TeamTwo">
+              <PropertyRef Name="IdTeamTwo" />
             </Principal>
-            <Dependent Role="Matches">
-              <PropertyRef Name="IdTeam2" />
+            <Dependent Role="Match">
+              <PropertyRef Name="IdTeamTwo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Refills_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Refills" Type="Self.Refills" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="IdUser" />
+            </Principal>
+            <Dependent Role="Refills">
+              <PropertyRef Name="IdUser" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -105,23 +132,29 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="Хранилище DBModelContainer">
-          <EntitySet Name="Matches" EntityType="Self.Matches" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Match" EntityType="Self.Match" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Refills" EntityType="Self.Refills" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sport" EntityType="Self.Sport" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Teams" EntityType="Self.Teams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TeamOne" EntityType="Self.TeamOne" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TeamTwo" EntityType="Self.TeamTwo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_Matches_Sport" Association="Self.FK_Matches_Sport">
+          <AssociationSet Name="FK_Match_Sport" Association="Self.FK_Match_Sport">
             <End Role="Sport" EntitySet="Sport" />
-            <End Role="Matches" EntitySet="Matches" />
+            <End Role="Match" EntitySet="Match" />
           </AssociationSet>
-          <AssociationSet Name="FK_Matches_Teams" Association="Self.FK_Matches_Teams">
-            <End Role="Teams" EntitySet="Teams" />
-            <End Role="Matches" EntitySet="Matches" />
+          <AssociationSet Name="FK_Match_TeamOne" Association="Self.FK_Match_TeamOne">
+            <End Role="TeamOne" EntitySet="TeamOne" />
+            <End Role="Match" EntitySet="Match" />
           </AssociationSet>
-          <AssociationSet Name="FK_Matches_Teams1" Association="Self.FK_Matches_Teams1">
-            <End Role="Teams" EntitySet="Teams" />
-            <End Role="Matches" EntitySet="Matches" />
+          <AssociationSet Name="FK_Match_TeamTwo" Association="Self.FK_Match_TeamTwo">
+            <End Role="TeamTwo" EntitySet="TeamTwo" />
+            <End Role="Match" EntitySet="Match" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Refills_User" Association="Self.FK_Refills_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Refills" EntitySet="Refills" />
           </AssociationSet>
           <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
             <End Role="Role" EntitySet="Role" />
@@ -133,25 +166,34 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Matches">
+        <EntityType Name="Match">
           <Key>
-            <PropertyRef Name="Idmatches" />
+            <PropertyRef Name="IdMatch" />
           </Key>
-          <Property Name="Idmatches" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IdTeam1" Type="Int32" Nullable="false" />
-          <Property Name="IdTeam2" Type="Int32" Nullable="false" />
+          <Property Name="IdMatch" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdTeamOne" Type="Int32" Nullable="false" />
+          <Property Name="IdTeamTwo" Type="Int32" Nullable="false" />
           <Property Name="IdSport" Type="Int32" Nullable="false" />
-          <Property Name="Price" Type="Decimal" Precision="7" Scale="2" Nullable="false" />
-          <NavigationProperty Name="Sport" Relationship="Self.FK_Matches_Sport" FromRole="Matches" ToRole="Sport" />
-          <NavigationProperty Name="Teams" Relationship="Self.FK_Matches_Teams" FromRole="Matches" ToRole="Teams" />
-          <NavigationProperty Name="Teams1" Relationship="Self.FK_Matches_Teams1" FromRole="Matches" ToRole="Teams" />
+          <Property Name="Coefficient" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Sport" Relationship="Self.FK_Match_Sport" FromRole="Match" ToRole="Sport" />
+          <NavigationProperty Name="TeamOne" Relationship="Self.FK_Match_TeamOne" FromRole="Match" ToRole="TeamOne" />
+          <NavigationProperty Name="TeamTwo" Relationship="Self.FK_Match_TeamTwo" FromRole="Match" ToRole="TeamTwo" />
+        </EntityType>
+        <EntityType Name="Refills">
+          <Key>
+            <PropertyRef Name="IdRefills" />
+          </Key>
+          <Property Name="IdRefills" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdUser" Type="Int32" Nullable="false" />
+          <Property Name="Sum" Type="Decimal" Precision="7" Scale="2" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Refills_User" FromRole="Refills" ToRole="User" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
             <PropertyRef Name="IdRole" />
           </Key>
           <Property Name="IdRole" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NameRole" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NameRole" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="User" Relationship="Self.FK_User_Role" FromRole="Role" ToRole="User" />
         </EntityType>
         <EntityType Name="Sport">
@@ -159,8 +201,8 @@
             <PropertyRef Name="IdSport" />
           </Key>
           <Property Name="IdSport" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NameSport" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Matches" Relationship="Self.FK_Matches_Sport" FromRole="Sport" ToRole="Matches" />
+          <Property Name="NameSport" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Match" Relationship="Self.FK_Match_Sport" FromRole="Sport" ToRole="Match" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -172,59 +214,79 @@
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
-        <EntityType Name="Teams">
+        <EntityType Name="TeamOne">
           <Key>
-            <PropertyRef Name="IdTeams" />
+            <PropertyRef Name="IdTeamOne" />
           </Key>
-          <Property Name="IdTeams" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NameTeams" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Matches" Relationship="Self.FK_Matches_Teams" FromRole="Teams" ToRole="Matches" />
-          <NavigationProperty Name="Matches1" Relationship="Self.FK_Matches_Teams1" FromRole="Teams" ToRole="Matches" />
+          <Property Name="IdTeamOne" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameTeamOne" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Match" Relationship="Self.FK_Match_TeamOne" FromRole="TeamOne" ToRole="Match" />
+        </EntityType>
+        <EntityType Name="TeamTwo">
+          <Key>
+            <PropertyRef Name="IdTeamTwo" />
+          </Key>
+          <Property Name="IdTeamTwo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameTeamTwo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Match" Relationship="Self.FK_Match_TeamTwo" FromRole="TeamTwo" ToRole="Match" />
         </EntityType>
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="IdUser" />
           </Key>
           <Property Name="IdUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="login" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Password" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="IdRole" Type="Int32" Nullable="false" />
+          <Property Name="LoginUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PasswodUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Balans" Type="Decimal" Precision="7" Scale="2" Nullable="false" />
+          <Property Name="IdRole" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Refills" Relationship="Self.FK_Refills_User" FromRole="User" ToRole="Refills" />
           <NavigationProperty Name="Role" Relationship="Self.FK_User_Role" FromRole="User" ToRole="Role" />
         </EntityType>
-        <Association Name="FK_Matches_Sport">
+        <Association Name="FK_Match_Sport">
           <End Role="Sport" Type="Self.Sport" Multiplicity="1" />
-          <End Role="Matches" Type="Self.Matches" Multiplicity="*" />
+          <End Role="Match" Type="Self.Match" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Sport">
               <PropertyRef Name="IdSport" />
             </Principal>
-            <Dependent Role="Matches">
+            <Dependent Role="Match">
               <PropertyRef Name="IdSport" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Matches_Teams">
-          <End Role="Teams" Type="Self.Teams" Multiplicity="1" />
-          <End Role="Matches" Type="Self.Matches" Multiplicity="*" />
+        <Association Name="FK_Match_TeamOne">
+          <End Role="TeamOne" Type="Self.TeamOne" Multiplicity="1" />
+          <End Role="Match" Type="Self.Match" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Teams">
-              <PropertyRef Name="IdTeams" />
+            <Principal Role="TeamOne">
+              <PropertyRef Name="IdTeamOne" />
             </Principal>
-            <Dependent Role="Matches">
-              <PropertyRef Name="IdTeam1" />
+            <Dependent Role="Match">
+              <PropertyRef Name="IdTeamOne" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Matches_Teams1">
-          <End Role="Teams" Type="Self.Teams" Multiplicity="1" />
-          <End Role="Matches" Type="Self.Matches" Multiplicity="*" />
+        <Association Name="FK_Match_TeamTwo">
+          <End Role="TeamTwo" Type="Self.TeamTwo" Multiplicity="1" />
+          <End Role="Match" Type="Self.Match" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Teams">
-              <PropertyRef Name="IdTeams" />
+            <Principal Role="TeamTwo">
+              <PropertyRef Name="IdTeamTwo" />
             </Principal>
-            <Dependent Role="Matches">
-              <PropertyRef Name="IdTeam2" />
+            <Dependent Role="Match">
+              <PropertyRef Name="IdTeamTwo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Refills_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Refills" Type="Self.Refills" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="IdUser" />
+            </Principal>
+            <Dependent Role="Refills">
+              <PropertyRef Name="IdUser" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -241,23 +303,29 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="DBEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Matches" EntityType="Self.Matches" />
+          <EntitySet Name="Match" EntityType="Self.Match" />
+          <EntitySet Name="Refills" EntityType="Self.Refills" />
           <EntitySet Name="Role" EntityType="Self.Role" />
           <EntitySet Name="Sport" EntityType="Self.Sport" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
-          <EntitySet Name="Teams" EntityType="Self.Teams" />
+          <EntitySet Name="TeamOne" EntityType="Self.TeamOne" />
+          <EntitySet Name="TeamTwo" EntityType="Self.TeamTwo" />
           <EntitySet Name="User" EntityType="Self.User" />
-          <AssociationSet Name="FK_Matches_Sport" Association="Self.FK_Matches_Sport">
+          <AssociationSet Name="FK_Match_Sport" Association="Self.FK_Match_Sport">
             <End Role="Sport" EntitySet="Sport" />
-            <End Role="Matches" EntitySet="Matches" />
+            <End Role="Match" EntitySet="Match" />
           </AssociationSet>
-          <AssociationSet Name="FK_Matches_Teams" Association="Self.FK_Matches_Teams">
-            <End Role="Teams" EntitySet="Teams" />
-            <End Role="Matches" EntitySet="Matches" />
+          <AssociationSet Name="FK_Match_TeamOne" Association="Self.FK_Match_TeamOne">
+            <End Role="TeamOne" EntitySet="TeamOne" />
+            <End Role="Match" EntitySet="Match" />
           </AssociationSet>
-          <AssociationSet Name="FK_Matches_Teams1" Association="Self.FK_Matches_Teams1">
-            <End Role="Teams" EntitySet="Teams" />
-            <End Role="Matches" EntitySet="Matches" />
+          <AssociationSet Name="FK_Match_TeamTwo" Association="Self.FK_Match_TeamTwo">
+            <End Role="TeamTwo" EntitySet="TeamTwo" />
+            <End Role="Match" EntitySet="Match" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Refills_User" Association="Self.FK_Refills_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Refills" EntitySet="Refills" />
           </AssociationSet>
           <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
             <End Role="Role" EntitySet="Role" />
@@ -270,14 +338,23 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="Хранилище DBModelContainer" CdmEntityContainer="DBEntities">
-          <EntitySetMapping Name="Matches">
-            <EntityTypeMapping TypeName="DBModel.Matches">
-              <MappingFragment StoreEntitySet="Matches">
-                <ScalarProperty Name="Idmatches" ColumnName="Idmatches" />
-                <ScalarProperty Name="IdTeam1" ColumnName="IdTeam1" />
-                <ScalarProperty Name="IdTeam2" ColumnName="IdTeam2" />
+          <EntitySetMapping Name="Match">
+            <EntityTypeMapping TypeName="DBModel.Match">
+              <MappingFragment StoreEntitySet="Match">
+                <ScalarProperty Name="IdMatch" ColumnName="IdMatch" />
+                <ScalarProperty Name="IdTeamOne" ColumnName="IdTeamOne" />
+                <ScalarProperty Name="IdTeamTwo" ColumnName="IdTeamTwo" />
                 <ScalarProperty Name="IdSport" ColumnName="IdSport" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Coefficient" ColumnName="Coefficient" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Refills">
+            <EntityTypeMapping TypeName="DBModel.Refills">
+              <MappingFragment StoreEntitySet="Refills">
+                <ScalarProperty Name="IdRefills" ColumnName="IdRefills" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="Sum" ColumnName="Sum" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -308,11 +385,19 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Teams">
-            <EntityTypeMapping TypeName="DBModel.Teams">
-              <MappingFragment StoreEntitySet="Teams">
-                <ScalarProperty Name="IdTeams" ColumnName="IdTeams" />
-                <ScalarProperty Name="NameTeams" ColumnName="NameTeams" />
+          <EntitySetMapping Name="TeamOne">
+            <EntityTypeMapping TypeName="DBModel.TeamOne">
+              <MappingFragment StoreEntitySet="TeamOne">
+                <ScalarProperty Name="IdTeamOne" ColumnName="IdTeamOne" />
+                <ScalarProperty Name="NameTeamOne" ColumnName="NameTeamOne" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TeamTwo">
+            <EntityTypeMapping TypeName="DBModel.TeamTwo">
+              <MappingFragment StoreEntitySet="TeamTwo">
+                <ScalarProperty Name="IdTeamTwo" ColumnName="IdTeamTwo" />
+                <ScalarProperty Name="NameTeamTwo" ColumnName="NameTeamTwo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -320,10 +405,10 @@
             <EntityTypeMapping TypeName="DBModel.User">
               <MappingFragment StoreEntitySet="User">
                 <ScalarProperty Name="IdUser" ColumnName="IdUser" />
-                <ScalarProperty Name="login" ColumnName="login" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="IdRole" ColumnName="IdRole" />
+                <ScalarProperty Name="LoginUser" ColumnName="LoginUser" />
+                <ScalarProperty Name="PasswodUser" ColumnName="PasswodUser" />
                 <ScalarProperty Name="Balans" ColumnName="Balans" />
+                <ScalarProperty Name="IdRole" ColumnName="IdRole" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

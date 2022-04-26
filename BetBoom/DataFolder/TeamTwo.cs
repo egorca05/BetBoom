@@ -12,21 +12,18 @@ namespace BetBoom.DataFolder
     using System;
     using System.Collections.Generic;
     
-    public partial class Teams
+    public partial class TeamTwo
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Teams()
+        public TeamTwo()
         {
-            this.Matches = new HashSet<Matches>();
-            this.Matches1 = new HashSet<Matches>();
+            this.Match = new HashSet<Match>();
         }
     
-        public int IdTeams { get; set; }
-        public string NameTeams { get; set; }
+        public int IdTeamTwo { get; set; }
+        public string NameTeamTwo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Matches> Matches { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Matches> Matches1 { get; set; }
+        public virtual ICollection<Match> Match { get; set; }
     }
 }
