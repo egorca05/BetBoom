@@ -4,6 +4,10 @@
              xmlns:local="clr-namespace:BetBoom"
              StartupUri="WindowFolder/NoRoleWindow/AutorizationWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ResourcesFolder/Dictionary.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
