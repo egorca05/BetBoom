@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BetBoom.WindowFolder.AdminFolder"
         mc:Ignorable="d"
-        Title="AdminMatchWindow" Height="600" Width="810" WindowStartupLocation="CenterScreen">
+        Title="AdminMatchWindow" Height="800" Width="810" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10"/>
@@ -23,7 +23,8 @@
         <Image Style="{StaticResource LogoImg}" Grid.Column="1" Grid.Row="1"/>
         <StackPanel Grid.Column="2" Grid.Row="1" Orientation="Horizontal">
             <Button x:Name="MatchBtn" Content="Матчи" Width="190" Style="{StaticResource BtnMenuAdminActive}"/>
-            <Button x:Name="PayBtn" Content="Пополнение" Width="190" Style="{StaticResource BtnMenuAdmin}"/>
+            <Button x:Name="PayBtn" Content="Пополнение" Width="190" Style="{StaticResource BtnMenuAdmin}" 
+                    Click="PayBtn_Click"/>
             <Button x:Name="ListBtn" Content="Пользователи" Width="190" Style="{StaticResource BtnMenuAdmin}"/>
         </StackPanel>
 

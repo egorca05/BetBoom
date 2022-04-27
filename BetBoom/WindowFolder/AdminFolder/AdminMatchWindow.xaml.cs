@@ -28,7 +28,13 @@ namespace BetBoom.WindowFolder.AdminFolder
             MatchDG.ItemsSource = DBEntities.GetContext().Match.ToList().
                 OrderBy(c => c.IdMatch);
         }
-
+        private void PayBtn_Click(object sender, RoutedEventArgs e)
+        {
+            AdminPayWindow adminPayWindow = new AdminPayWindow();
+            adminPayWindow.Show();
+            this.Close();
+        }
+        //Редактирование
         private void UserDG_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
 
@@ -60,5 +66,6 @@ namespace BetBoom.WindowFolder.AdminFolder
                 MBClass.MBError(ex);
             }
         }
+
     }
 }

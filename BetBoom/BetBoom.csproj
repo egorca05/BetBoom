@@ -114,6 +114,9 @@
     <Compile Include="WindowFolder\AdminFolder\AdminMatchWindow.xaml.cs">
       <DependentUpon>AdminMatchWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="WindowFolder\AdminFolder\AdminPayWindow.xaml.cs">
+      <DependentUpon>AdminPayWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WindowFolder\NoRoleWindow\AutorizationWindow.xaml.cs">
       <DependentUpon>AutorizationWindow.xaml</DependentUpon>
     </Compile>
@@ -165,6 +168,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="WindowFolder\AdminFolder\AdminMatchWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowFolder\AdminFolder\AdminPayWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
