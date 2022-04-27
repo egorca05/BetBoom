@@ -117,6 +117,9 @@
     <Compile Include="WindowFolder\UserFolder\UserMatchWindow.xaml.cs">
       <DependentUpon>UserMatchWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="WindowFolder\UserFolder\Window1.xaml.cs">
+      <DependentUpon>Window1.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -166,6 +169,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="WindowFolder\UserFolder\UserMatchWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowFolder\UserFolder\Window1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
