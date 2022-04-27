@@ -47,6 +47,7 @@
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="Background" Value="{x:Null}"/>
         <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="Margin" Value="10"/>
     </Style>
 
     <Style TargetType="PasswordBox">
@@ -62,6 +63,16 @@
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="Background" Value="{x:Null}"/>
         <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="Margin" Value="10"/>
+    </Style>
+
+    <Style TargetType="ComboBox">
+        <Setter Property="FontFamily" Value="Gilroy"/>
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="Margin" Value="10"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="Height" Value="50"/>
     </Style>
     <!--////////////////////////////////////////////Кнопки////////////////////////////////////////////-->
     <Style TargetType="Button" x:Key="BtnActive">
@@ -126,12 +137,12 @@
     <!--////////////////////////////////////////////Списки////////////////////////////////////////////-->
     <Style TargetType="DataGrid">
         <Setter Property="Background" Value="Black"/>
-        <Setter Property="BorderBrush" Value="MediumPurple"/>
+        <Setter Property="BorderBrush" Value="Gold"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="HorizontalContentAlignment" Value="Left"/>
         <Setter Property="RowBackground" Value="{x:Null}"/>
-        <Setter Property="HorizontalGridLinesBrush" Value="MediumPurple"/>
-        <Setter Property="VerticalGridLinesBrush" Value="MediumPurple"/>
+        <Setter Property="HorizontalGridLinesBrush" Value="Gold"/>
+        <Setter Property="VerticalGridLinesBrush" Value="Gold"/>
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="Padding" Value="10"/>
     </Style>

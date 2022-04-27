@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BetBoom.WindowFolder.AdminFolder"
         mc:Ignorable="d"
-        Title="AdminMatchWindow" Height="600" Width="800">
+        Title="AdminMatchWindow" Height="600" Width="810" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10"/>
@@ -37,5 +37,12 @@
                 <DataGridTextColumn Header="Коффициэнт" Binding="{Binding Coefficient}" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
+
+        <StackPanel Grid.Column="1" Grid.Row="3" Orientation="Horizontal" Grid.ColumnSpan="2" HorizontalAlignment="Center">
+            <Button x:Name="AddBtn" Content="Добавить" Width="190" Style="{StaticResource BtnMenuAdmin}"
+                    Click="AddBtn_Click"/>
+            <Button x:Name="DelBtn" Content="Удалить" Width="190" Style="{StaticResource BtnMenuAdmin}"
+                    Click="DelBtn_Click"/>
+        </StackPanel>
     </Grid>
 </Window>
