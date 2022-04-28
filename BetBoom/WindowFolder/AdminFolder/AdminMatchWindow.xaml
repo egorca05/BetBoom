@@ -25,7 +25,8 @@
             <Button x:Name="MatchBtn" Content="Матчи" Width="190" Style="{StaticResource BtnMenuAdminActive}"/>
             <Button x:Name="PayBtn" Content="Пополнение" Width="190" Style="{StaticResource BtnMenuAdmin}" 
                     Click="PayBtn_Click"/>
-            <Button x:Name="ListBtn" Content="Пользователи" Width="190" Style="{StaticResource BtnMenuAdmin}"/>
+            <Button x:Name="ListBtn" Content="Пользователи" Width="190" Style="{StaticResource BtnMenuAdmin}"
+                    Click="ListBtn_Click"/>
         </StackPanel>
 
         <DataGrid x:Name="MatchDG" AutoGenerateColumns="False" 

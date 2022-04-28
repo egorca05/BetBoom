@@ -33,17 +33,17 @@ namespace BetBoom.WindowFolder.AdminFolder
             AdminRegUserWindow adminRegUserWindow = new AdminRegUserWindow();
             adminRegUserWindow.Show();
             LoginDG.ItemsSource = DBEntities.GetContext().User.ToList().
-                OrderBy(c => c.LoginUser);
+               OrderBy(c => c.LoginUser);
         }
 
         private void DelBtn_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                Match match = LoginDG.SelectedItem as Match;
-                if (MBClass.QuestionMessage($"Удалить выбранного пользателя?"))
+                User user = LoginDG.SelectedItem as User;
+                if (MBClass.QuestionMessage($"Удалить выбранный матч?"))
                 {
-                    DBEntities.GetContext().Match.Remove(match);
+                    DBEntities.GetContext().User.Remove(user);
                     DBEntities.GetContext().SaveChanges();
                     LoginDG.ItemsSource = DBEntities.GetContext().User.ToList().
                 OrderBy(c => c.IdUser);

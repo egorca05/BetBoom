@@ -37,10 +37,11 @@
         </StackPanel>
 
         <DataGrid x:Name="LoginDG" AutoGenerateColumns="False" 
-                      IsReadOnly="True" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" Width="500">
+                      IsReadOnly="True" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" Width="700">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="№" Binding="{Binding IdUser}" Width="50"/>
                 <DataGridTextColumn Header="Логин" Binding="{Binding LoginUser}" Width="*"/>
+                <DataGridTextColumn Header="Роль" Binding="{Binding Role.NameRole}" Width="*"/>
                 <DataGridTextColumn Header="Баланс" Binding="{Binding Balans}" Width="100"/>
             </DataGrid.Columns>
         </DataGrid>

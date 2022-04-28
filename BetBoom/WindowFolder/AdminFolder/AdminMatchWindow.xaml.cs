@@ -68,5 +68,11 @@ namespace BetBoom.WindowFolder.AdminFolder
             }
         }
 
+        private void ListBtn_Click(object sender, RoutedEventArgs e)
+        {
+            AdminUserWindow adminUserWindow = new AdminUserWindow();
+            adminUserWindow.ShowDialog();
+            this.Close();
+        }
     }
 }

@@ -23,5 +23,15 @@ namespace BetBoom.WindowFolder.DirectorFolder
         {
             InitializeComponent();
         }
+
+        private void MatchBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void LoginTb_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }
