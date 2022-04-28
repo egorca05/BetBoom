@@ -26,7 +26,7 @@ namespace BetBoom.WindowFolder.AdminFolder
         {
             InitializeComponent();
             MatchDG.ItemsSource = DBEntities.GetContext().Match.ToList().
-                OrderBy(c => c.IdMatch);
+                OrderBy(c => c.IdMatch); //Заполнение списка
         }
         private void PayBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -34,8 +34,8 @@ namespace BetBoom.WindowFolder.AdminFolder
             adminPayWindow.Show();
             this.Close();
         }
-        //Редактирование
-        private void UserDG_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+
+        private void UserDG_MouseDoubleClick(object sender, MouseButtonEventArgs e) //Редактирование
         {
 
         }
@@ -44,11 +44,12 @@ namespace BetBoom.WindowFolder.AdminFolder
         {
             AddMatchWindow addMatchWindow = new AddMatchWindow();
             addMatchWindow.ShowDialog();
+            //Автообновление
             MatchDG.ItemsSource = DBEntities.GetContext().Match.ToList().
                OrderBy(c => c.IdMatch);
         }
 
-        private void DelBtn_Click(object sender, RoutedEventArgs e)
+        private void DelBtn_Click(object sender, RoutedEventArgs e) //Удаление
         {
             try
             {
