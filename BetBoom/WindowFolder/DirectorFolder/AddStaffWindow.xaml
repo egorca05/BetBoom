@@ -5,49 +5,46 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BetBoom.WindowFolder.DirectorFolder"
         mc:Ignorable="d"
-        Title="AddStaffWindow" Height="800" Width="810" WindowStartupLocation="CenterScreen">
+        Title="AddStaffWindow" Height="600" Width="500" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10"/>
-            <ColumnDefinition Width="150"/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="11*"/>
+            <ColumnDefinition Width="13*"/>
+            <ColumnDefinition Width="50"/>
             <ColumnDefinition Width="10"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="10"/>
-            <RowDefinition Height="100"/>
-            <RowDefinition Height="100"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
             <RowDefinition/>
             <RowDefinition Height="100"/>
             <RowDefinition Height="10"/>
         </Grid.RowDefinitions>
-        <Image Style="{StaticResource LogoImg}" Grid.Column="1" Grid.Row="1"/>
-        <StackPanel Grid.Column="2" Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button x:Name="MatchBtn" Content="Сотрудники" Width="190" Style="{StaticResource  BtnMenuAdminActive}"
-                    Click="MatchBtn_Click"/>
-<!--заебал-->
-            <Button x:Name="ListBtn" Content="Отчеты" Width="190" Style="{StaticResource BtnMenuAdmin}"/>
-        </StackPanel>
+        <Label x:Name="LblLogo" Content="Регистрация"
+               Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="3"
+               Style="{StaticResource LblLogo}"/>
 
-        <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Horizontal" Grid.ColumnSpan="2" HorizontalAlignment="Center">
-            <Label Content="Логин:" Width="100" Style="{StaticResource  LblNormal}"/>
-            <TextBox x:Name="LoginTb" Width="300" TextChanged="LoginTb_TextChanged"/>
-        </StackPanel>
+        <Label  Content="Фамилия:" Grid.Column="1" Grid.Row="2"
+                   Style="{StaticResource LblNormal}"/>
+        <TextBox x:Name="FamTB" Grid.Column="2" Grid.Row="2"/>
 
-        <DataGrid x:Name="LoginDG" AutoGenerateColumns="False" 
-                      IsReadOnly="True" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" Width="500">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="№" Binding="{Binding IdUser}" Width="50"/>
-                <DataGridTextColumn Header="Логин" Binding="{Binding LoginUser}" Width="*"/>
-                <DataGridTextColumn Header="Баланс" Binding="{Binding Balans}" Width="100"/>
-            </DataGrid.Columns>
-        </DataGrid>
+        <Label  Content="Имя:" Grid.Column="1" Grid.Row="2"
+                   Style="{StaticResource LblNormal}" Grid.RowSpan="3"/>
+        <TextBox x:Name="NameTB" Grid.Column="2" Grid.Row="3"/>
 
-        <StackPanel Grid.Column="1" Grid.Row="4" Orientation="Horizontal" Grid.ColumnSpan="2" HorizontalAlignment="Center">
-            <Button x:Name="RegBtn" Content="Регистрация" Width="190" Style="{StaticResource BtnMenuAdmin}"
-                    Click="RegBtn_Click"/>
-            <Button x:Name="DelBtn" Content="Удалить" Width="190" Style="{StaticResource BtnMenuAdmin}"
-                    Click="DelBtn_Click"/>
-        </StackPanel>
+        <Label  Content="Отчество:" Grid.Column="1" Grid.Row="3"
+                   Style="{StaticResource LblNormal}" Grid.RowSpan="3"/>
+        <TextBox x:Name="OtcTB" Grid.Column="2" Grid.Row="4"/>
+        <Label  Content="Номер:" Grid.Column="1" Grid.Row="4"
+                   Style="{StaticResource LblNormal}" Grid.RowSpan="3"/>
+        <TextBox x:Name="FonTB" Grid.Column="2" Grid.Row="5"/>
+        <Button x:Name="RegistrationBtn" Content="Зарегистрировать" Grid.Column="2"
+                Grid.Row="6" Grid.ColumnSpan="2" Style="{StaticResource BtnActive}"/>
+        <Button x:Name="ExitBtn" Content="Отмена" Grid.Row="6"
+                Grid.Column="1" Style="{DynamicResource  BtnMenuAdmin}"/>
     </Grid>
 </Window>
