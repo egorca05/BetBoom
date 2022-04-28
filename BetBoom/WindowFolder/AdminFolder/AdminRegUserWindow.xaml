@@ -22,19 +22,19 @@
             <RowDefinition Height="100"/>
             <RowDefinition Height="10"/>
         </Grid.RowDefinitions>
-        <Label x:Name="LblLogo" Content="Добавить матч"
+        <Label x:Name="LblLogo" Content="Регистрация"
                Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="3"
                Style="{StaticResource LblLogo}"/>
 
         <Label  Content="Логин:" Grid.Column="1" Grid.Row="2"
                    Style="{StaticResource LblNormal}"/>
-        <TextBox x:Name="LoginCB" Grid.Column="2" Grid.Row="2"/>
+        <TextBox x:Name="LoginTB" Grid.Column="2" Grid.Row="2"/>
 
         <Label  Content="Пароль:" Grid.Column="1" Grid.Row="2"
                    Style="{StaticResource LblNormal}" Grid.RowSpan="3"/>
-        <TextBox x:Name="PasswordCB" Grid.Column="2" Grid.Row="3"/>
+        <TextBox x:Name="PasswordTB" Grid.Column="2" Grid.Row="3"/>
 
-        <Button x:Name="RegistrationBtn" Content="Добавить" Grid.Column="2"
+        <Button x:Name="RegistrationBtn" Content="Зарегистрировать" Grid.Column="2"
                 Grid.Row="4" Grid.ColumnSpan="2" Style="{StaticResource BtnActive}"
                 Click="RegistrationBtn_Click"/>
         <Button x:Name="ExitBtn" Content="Отмена" Grid.Row="4"

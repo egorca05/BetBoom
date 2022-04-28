@@ -24,11 +24,16 @@ namespace BetBoom.WindowFolder.AdminFolder
         public AdminUserWindow()
         {
             InitializeComponent();
+            LoginDG.ItemsSource = DBEntities.GetContext().User.ToList().
+                OrderBy(c => c.LoginUser);
         }
 
         private void RegBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            AdminRegUserWindow adminRegUserWindow = new AdminRegUserWindow();
+            adminRegUserWindow.Show();
+            LoginDG.ItemsSource = DBEntities.GetContext().User.ToList().
+                OrderBy(c => c.LoginUser);
         }
 
         private void DelBtn_Click(object sender, RoutedEventArgs e)
@@ -78,6 +83,13 @@ namespace BetBoom.WindowFolder.AdminFolder
         {
             AdminPayWindow adminPayWindow = new AdminPayWindow();
             adminPayWindow.Show();
+            this.Close();
+        }
+
+        private void ListBtn_Click(object sender, RoutedEventArgs e)
+        {
+            AdminUserWindow adminUserWindow = new AdminUserWindow();
+            adminUserWindow.Show();
             this.Close();
         }
     }
