@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BetBoom.WindowFolder.DirectorFolder"
         mc:Ignorable="d"
-        Title="AddStaffWindow" Height="600" Width="500" WindowStartupLocation="CenterScreen">
+        Title="Регистрация сотрудника" Height="600" Width="500" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10"/>
@@ -20,7 +20,7 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
-            <RowDefinition/>
+
             <RowDefinition Height="100"/>
             <RowDefinition Height="10"/>
         </Grid.RowDefinitions>
@@ -39,12 +39,9 @@
         <Label  Content="Отчество:" Grid.Column="1" Grid.Row="3"
                    Style="{StaticResource LblNormal}" Grid.RowSpan="3"/>
         <TextBox x:Name="OtcTB" Grid.Column="2" Grid.Row="4"/>
-        <Label  Content="Номер:" Grid.Column="1" Grid.Row="4"
-                   Style="{StaticResource LblNormal}" Grid.RowSpan="3"/>
-        <TextBox x:Name="FonTB" Grid.Column="2" Grid.Row="5"/>
         <Button x:Name="RegistrationBtn" Content="Зарегистрировать" Grid.Column="2"
-                Grid.Row="6" Grid.ColumnSpan="2" Style="{StaticResource BtnActive}"/>
-        <Button x:Name="ExitBtn" Content="Отмена" Grid.Row="6"
+                Grid.Row="5" Grid.ColumnSpan="2" Style="{StaticResource BtnActive}"/>
+        <Button x:Name="ExitBtn" Content="Отмена" Grid.Row="5"
                 Grid.Column="1" Style="{DynamicResource  BtnMenuAdmin}"/>
     </Grid>
 </Window>

@@ -47,7 +47,7 @@
                   SelectedValuePath="IdSport"/>
 
         <TextBox x:Name="KofTB" Grid.Column="2" Grid.Row="5"/>
-        <Label   Content="Коффиц:" Grid.Column="1" Grid.Row="5"
+        <Label   Content="Коэффициент:" Grid.Column="1" Grid.Row="5"
                    Style="{StaticResource LblNormal}"/>
 
         <Button x:Name="RegistrationBtn" Content="Добавить" Grid.Column="2"
