@@ -1,4 +1,5 @@
-﻿using BetBoom.DataFolder;
+﻿using BetBoom.ClassFolder;
+using BetBoom.DataFolder;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+
 
 namespace BetBoom.WindowFolder.AdminFolder
 {
@@ -29,12 +31,43 @@ namespace BetBoom.WindowFolder.AdminFolder
 
         private void GoPayBtn_Click(object sender, RoutedEventArgs e)
         {
+            User user = LoginDG.SelectedItem as User;
+            user.Balans += Convert.ToDecimal(BalansTb.Text);
 
+            DBEntities.GetContext().SaveChanges();
+            MBClass.MBInformation("Успешно");
+            LoginDG.ItemsSource = DBEntities.GetContext().User.ToList().
+                OrderBy(c => c.LoginUser);
         }
 
         private void LoginTb_TextChanged(object sender, TextChangedEventArgs e)
         {
+            try
+            {
+                LoginDG.ItemsSource = DBEntities.GetContext().User.Where(u => u.LoginUser.StartsWith(LoginTb.Text)).ToList();
+                if (LoginDG.Items.Count <= 0)
+                {
+                    MBClass.MBError("пользователь не найден");
+                }
+            }
+            catch (Exception ex)
+            {
+                MBClass.MBError(ex);
+            }
+        }
 
+        private void ListBtn_Click(object sender, RoutedEventArgs e)
+        {
+            AdminUserWindow adminUserWindow = new AdminUserWindow();
+            adminUserWindow.Show();
+            this.Close();
+        }
+
+        private void MatchBtn_Click(object sender, RoutedEventArgs e)
+        {
+            AdminMatchWindow adminMatchWindow = new AdminMatchWindow();
+            adminMatchWindow.Show();
+            this.Close();
         }
     }
 }
