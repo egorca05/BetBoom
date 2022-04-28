@@ -108,17 +108,20 @@
     <Compile Include="DataFolder\User.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="WindowFolder\AdminFolder\AddMatchWindow.xaml.cs">
+      <DependentUpon>AddMatchWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WindowFolder\AdminFolder\AdminMatchWindow.xaml.cs">
       <DependentUpon>AdminMatchWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WindowFolder\AdminFolder\AdminPayWindow.xaml.cs">
+      <DependentUpon>AdminPayWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="WindowFolder\NoRoleWindow\AutorizationWindow.xaml.cs">
       <DependentUpon>AutorizationWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="WindowFolder\UserFolder\UserMatchWindow.xaml.cs">
       <DependentUpon>UserMatchWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="WindowFolder\UserFolder\Window1.xaml.cs">
-      <DependentUpon>Window1.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -160,7 +163,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="WindowFolder\AdminFolder\AddMatchWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="WindowFolder\AdminFolder\AdminMatchWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowFolder\AdminFolder\AdminPayWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -169,10 +180,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="WindowFolder\UserFolder\UserMatchWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="WindowFolder\UserFolder\Window1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
