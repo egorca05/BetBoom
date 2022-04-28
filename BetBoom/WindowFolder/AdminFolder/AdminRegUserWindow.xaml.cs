@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BetBoom.ClassFolder;
+using BetBoom.DataFolder;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +24,30 @@ namespace BetBoom.WindowFolder.AdminFolder
         public AdminRegUserWindow()
         {
             InitializeComponent();
+        }
+
+        private void RegistrationBtn_Click(object sender, RoutedEventArgs e)
+        {
+            AddUser();
+            MBClass.MBInformation("Пользователь зарегистрирован");
+            this.Close();
+        }
+
+        private void AddUser()
+        {
+            DBEntities.GetContext().User.Add(new User()
+            {
+                LoginUser = LoginTB.Text,
+                PasswodUser = PasswordTB.Text,
+                Balans = 0,
+                IdRole = 2
+            });
+            DBEntities.GetContext().SaveChanges();
+        }
+
+        private void ExitBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

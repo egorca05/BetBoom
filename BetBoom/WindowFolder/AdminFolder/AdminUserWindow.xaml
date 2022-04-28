@@ -27,7 +27,8 @@
                     Click="MatchBtn_Click"/>
             <Button x:Name="PayBtn" Content="Пополнение" Width="190" Style="{StaticResource  BtnMenuAdmin}"
                     Click="PayBtn_Click"/>
-            <Button x:Name="ListBtn" Content="Пользователи" Width="190" Style="{StaticResource BtnMenuAdminActive}"/>
+            <Button x:Name="ListBtn" Content="Пользователи" Width="190" Style="{StaticResource BtnMenuAdminActive}"
+                    Click="ListBtn_Click"/>
         </StackPanel>
 
         <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Horizontal" Grid.ColumnSpan="2" HorizontalAlignment="Center">
