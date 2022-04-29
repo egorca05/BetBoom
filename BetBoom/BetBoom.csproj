@@ -142,6 +142,9 @@
     <Compile Include="WindowFolder\UserFolder\UserMatchWindow.xaml.cs">
       <DependentUpon>UserMatchWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="WindowFolder\UserFolder\UserStafkaWindow.xaml.cs">
+      <DependentUpon>UserStafkaWindow.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -223,6 +226,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="WindowFolder\UserFolder\UserMatchWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowFolder\UserFolder\UserStafkaWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
