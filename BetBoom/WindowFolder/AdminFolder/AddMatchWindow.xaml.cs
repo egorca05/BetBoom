@@ -39,7 +39,23 @@ namespace BetBoom.WindowFolder.AdminFolder
 
         private void RegistrationBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (Team1CB.SelectedValue.ToString() == Team2CB.SelectedValue.ToString())
+            if(Team1CB.SelectedItem == null)
+            {
+                MBClass.MBError("Выберите первую команду");
+            }
+            else if (Team2CB.SelectedItem == null)
+            {
+                MBClass.MBError("Выберите вторую команду");
+            }
+            else if (SportCB.SelectedItem == null)
+            {
+                MBClass.MBError("Выберите вид спорта");
+            }
+            else if (KofTB.Text == String.Empty)
+            {
+                MBClass.MBError("Введите коэффициент");
+            }
+            else if (Team1CB.SelectedValue.ToString() == Team2CB.SelectedValue.ToString())
             {
                 MBClass.MBError("Команды не могут совпадать");
             }

@@ -28,9 +28,20 @@ namespace BetBoom.WindowFolder.AdminFolder
 
         private void RegistrationBtn_Click(object sender, RoutedEventArgs e)
         {
-            AddUser();
-            MBClass.MBInformation("Пользователь зарегистрирован");
-            this.Close();
+            if (LoginTB.Text == String.Empty)
+            {
+                MBClass.MBError("Введите логин");
+            }
+            else if(PasswordTB.Text == String.Empty)
+            {
+                MBClass.MBError("Введите пароль");
+            }
+            else
+            {
+                AddUser();
+                MBClass.MBInformation("Пользователь зарегистрирован");
+                this.Close();
+            }
         }
 
         private void AddUser()

@@ -31,13 +31,38 @@ namespace BetBoom.WindowFolder.AdminFolder
 
         private void GoPayBtn_Click(object sender, RoutedEventArgs e)
         {
-            User user = LoginDG.SelectedItem as User;
-            user.Balans += Convert.ToDecimal(BalansTb.Text);
+            if (LoginDG.SelectedItem == null)
+            {
+                MBClass.MBError("Выберите клиента");
+            }
+            else if (BalansTb.Text == String.Empty)
+            {
+                MBClass.MBError("введите сумму пополнения");
+            }
+            else
+            {
+                //Пополнение баланса
+                User user = LoginDG.SelectedItem as User;
+                user.Balans += Convert.ToDecimal(BalansTb.Text);
+                DBEntities.GetContext().SaveChanges();
 
+                //Создание истории пополнения
+                //AddReport(); пока не работает
+
+                MBClass.MBInformation("Успешно");
+                LoginDG.ItemsSource = DBEntities.GetContext().User.ToList().
+                    OrderBy(c => c.LoginUser);
+            }
+        }
+
+        private void AddReport()
+        {
+            DBEntities.GetContext().Refills.Add(new Refills()
+            {
+                IdUser = Convert.ToInt32(LoginDG.SelectedItem),
+                Sum = Convert.ToInt32(BalansTb.Text)
+            });
             DBEntities.GetContext().SaveChanges();
-            MBClass.MBInformation("Успешно");
-            LoginDG.ItemsSource = DBEntities.GetContext().User.ToList().
-                OrderBy(c => c.LoginUser);
         }
 
         private void LoginTb_TextChanged(object sender, TextChangedEventArgs e)

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BetBoom.ClassFolder;
+using BetBoom.DataFolder;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +24,8 @@ namespace BetBoom.WindowFolder.DirectorFolder
         public ReportsWindow()
         {
             InitializeComponent();
+            LoginDG.ItemsSource = DBEntities.GetContext().Refills.ToList().
+                OrderBy(c => c.IdRefills);
         }
 
         private void MatchBtn_Click(object sender, RoutedEventArgs e)
@@ -31,7 +35,18 @@ namespace BetBoom.WindowFolder.DirectorFolder
 
         private void LoginTb_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            try
+            {
+                LoginDG.ItemsSource = DBEntities.GetContext().User.Where(u => u.LoginUser.StartsWith(LoginTb.Text)).ToList();
+                if (LoginDG.Items.Count <= 0)
+                {
+                    MBClass.MBError("пользователь не найден");
+                }
+            }
+            catch (Exception ex)
+            {
+                MBClass.MBError(ex);
+            }
         }
     }
 }

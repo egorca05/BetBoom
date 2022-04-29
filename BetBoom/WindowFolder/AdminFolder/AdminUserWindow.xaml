@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BetBoom.WindowFolder.AdminFolder"
         mc:Ignorable="d"
-        Title="AdminPayWindow" Height="800" Width="810" WindowStartupLocation="CenterScreen">
+        Title="Пополнение баланса" Height="800" Width="810" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10"/>
