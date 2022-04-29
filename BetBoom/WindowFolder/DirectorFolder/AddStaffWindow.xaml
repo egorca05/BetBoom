@@ -19,8 +19,6 @@
             <RowDefinition Height="*"/>
             <RowDefinition/>
             <RowDefinition/>
-            <RowDefinition/>
-
             <RowDefinition Height="100"/>
             <RowDefinition Height="10"/>
         </Grid.RowDefinitions>
@@ -28,20 +26,19 @@
                Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="3"
                Style="{StaticResource LblLogo}"/>
 
-        <Label  Content="Фамилия:" Grid.Column="1" Grid.Row="2"
+        <Label  Content="Логин:" Grid.Column="1" Grid.Row="2"
                    Style="{StaticResource LblNormal}"/>
-        <TextBox x:Name="FamTB" Grid.Column="2" Grid.Row="2"/>
+        <TextBox x:Name="LoginTB" Grid.Column="2" Grid.Row="2"/>
 
-        <Label  Content="Имя:" Grid.Column="1" Grid.Row="2"
-                   Style="{StaticResource LblNormal}" Grid.RowSpan="3"/>
-        <TextBox x:Name="NameTB" Grid.Column="2" Grid.Row="3"/>
+        <Label  Content="Пароль:" Grid.Column="1" Grid.Row="3"
+                   Style="{StaticResource LblNormal}"/>
+        <TextBox x:Name="PasswordTB" Grid.Column="2" Grid.Row="3"/>
 
-        <Label  Content="Отчество:" Grid.Column="1" Grid.Row="3"
-                   Style="{StaticResource LblNormal}" Grid.RowSpan="3"/>
-        <TextBox x:Name="OtcTB" Grid.Column="2" Grid.Row="4"/>
         <Button x:Name="RegistrationBtn" Content="Зарегистрировать" Grid.Column="2"
-                Grid.Row="5" Grid.ColumnSpan="2" Style="{StaticResource BtnActive}"/>
-        <Button x:Name="ExitBtn" Content="Отмена" Grid.Row="5"
-                Grid.Column="1" Style="{DynamicResource  BtnMenuAdmin}"/>
+                Grid.Row="4" Grid.ColumnSpan="2" Style="{StaticResource BtnActive}"
+                Click="RegistrationBtn_Click"/>
+        <Button x:Name="ExitBtn" Content="Отмена" Grid.Row="4"
+                Grid.Column="1" Style="{DynamicResource  BtnMenuAdmin}"
+                Click="ExitBtn_Click"/>
     </Grid>
 </Window>

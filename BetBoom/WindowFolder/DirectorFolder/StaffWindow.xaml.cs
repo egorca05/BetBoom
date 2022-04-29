@@ -49,7 +49,8 @@ namespace BetBoom.WindowFolder.DirectorFolder
         {
             AddStaffWindow staffWindow = new AddStaffWindow();
             staffWindow.Show();
-            this.Close();
+            LoginDG.ItemsSource = DBEntities.GetContext().User.ToList().
+                OrderBy(c => c.LoginUser);
         }
 
         private void DelBtn_Click(object sender, RoutedEventArgs e)
