@@ -47,7 +47,7 @@ namespace BetBoom.WindowFolder.AdminFolder
                 DBEntities.GetContext().SaveChanges();
 
                 //Создание истории пополнения
-                //AddReport(); пока не работает
+                AddReport();
 
                 MBClass.MBInformation("Успешно");
                 LoginDG.ItemsSource = DBEntities.GetContext().User.ToList().
@@ -57,10 +57,11 @@ namespace BetBoom.WindowFolder.AdminFolder
 
         private void AddReport()
         {
+            User user = LoginDG.SelectedItem as User;
             Match match = LoginDG.SelectedItem as Match;
             DBEntities.GetContext().Refills.Add(new Refills()
             {
-                IdUser = Convert.ToInt32(LoginDG.SelectedItem),
+                IdUser = user.IdUser,
                 Sum = Convert.ToInt32(BalansTb.Text)
             });
             DBEntities.GetContext().SaveChanges();
