@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BetBoom.ClassFolder;
+using BetBoom.DataFolder;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,19 +13,18 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using BetBoom.DataFolder;
-using BetBoom.ClassFolder;
 
 namespace BetBoom.WindowFolder.AdminFolder
 {
     /// <summary>
-    /// Логика взаимодействия для AddMatchWindow.xaml
+    /// Логика взаимодействия для AdminEditMatchWindow.xaml
     /// </summary>
-    public partial class AddMatchWindow : Window
+    public partial class AdminEditMatchWindow : Window
     {
-        public AddMatchWindow()
+        public AdminEditMatchWindow(Match Match)
         {
             InitializeComponent();
+            DataContext = Match;
             Team1CB.ItemsSource = DBEntities.GetContext()
                 .TeamOne.ToList();
             Team2CB.ItemsSource = DBEntities.GetContext()
@@ -32,14 +33,9 @@ namespace BetBoom.WindowFolder.AdminFolder
                 .Sport.ToList();
         }
 
-        private void ExitBtn_Click(object sender, RoutedEventArgs e)
+        private void EditBtn_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
-        }
-
-        private void RegistrationBtn_Click(object sender, RoutedEventArgs e)
-        {
-            if(Team1CB.SelectedItem == null)
+            if (Team1CB.SelectedItem == null)
             {
                 MBClass.MBError("Выберите первую команду");
             }
@@ -61,22 +57,22 @@ namespace BetBoom.WindowFolder.AdminFolder
             }
             else
             {
-                AddMatch();
-                MBClass.MBInformation("Матч успешно создан");
+                Match match = DBEntities.GetContext().Match
+                .FirstOrDefault(s => s.IdMatch == VariableClass.IdMatch);
+                match.TeamOne.NameTeamOne = Team1CB.Text;
+                match.TeamTwo.NameTeamTwo = Team2CB.Text;
+                match.Sport.NameSport = SportCB.Text;
+                match.Coefficient = Convert.ToInt32(KofTB.Text);
+
+                DBEntities.GetContext().SaveChanges();
+                MBClass.MBInformation("Успешно");
                 this.Close();
             }
         }
 
-        private void AddMatch()
-        {
-            DBEntities.GetContext().Match.Add(new Match()
-            {
-                IdTeamOne = Int32.Parse(Team1CB.SelectedValue.ToString()),
-                IdTeamTwo = Int32.Parse(Team2CB.SelectedValue.ToString()),
-                IdSport = Int32.Parse(SportCB.SelectedValue.ToString()),
-                Coefficient = Int32.Parse(KofTB.Text),              
-            }); ;
-            DBEntities.GetContext().SaveChanges();
+        private void ExitBtn_Click(object sender, RoutedEventArgs e)
+        {           
+            this.Close();
         }
     }
 }

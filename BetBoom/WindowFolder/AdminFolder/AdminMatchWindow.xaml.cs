@@ -37,7 +37,17 @@ namespace BetBoom.WindowFolder.AdminFolder
 
         private void UserDG_MouseDoubleClick(object sender, MouseButtonEventArgs e) //Редактирование
         {
-
+            if (MatchDG.SelectedItem == null)
+            {
+                MBClass.MBError("Не выбран матч для изменения");
+            }
+            else
+            {
+                Match match = MatchDG.SelectedItem as Match;
+                VariableClass.IdMatch = match.IdMatch;
+                new AdminEditMatchWindow(MatchDG.SelectedItem as Match).Show();
+                MatchDG.ItemsSource = DBEntities.GetContext().Match.ToList().OrderBy(c => c.IdMatch);
+            }
         }
 
         private void AddBtn_Click(object sender, RoutedEventArgs e)
@@ -51,20 +61,27 @@ namespace BetBoom.WindowFolder.AdminFolder
 
         private void DelBtn_Click(object sender, RoutedEventArgs e) //Удаление
         {
-            try
+            if (MatchDG.SelectedItem == null)
             {
-                Match match = MatchDG.SelectedItem as Match;
-                if (MBClass.QuestionMessage($"Удалить выбранный матч?"))
-                {
-                    DBEntities.GetContext().Match.Remove(match);
-                    DBEntities.GetContext().SaveChanges();
-                    MatchDG.ItemsSource = DBEntities.GetContext().Match.ToList().
-                OrderBy(c => c.IdMatch);
-                }
+                MBClass.MBError("Выберите матч для удаления");
             }
-            catch (Exception ex)
+            else
             {
-                MBClass.MBError(ex);
+                try
+                {
+                    Match match = MatchDG.SelectedItem as Match;
+                    if (MBClass.QuestionMessage($"Удалить выбранный матч?"))
+                    {
+                        DBEntities.GetContext().Match.Remove(match);
+                        DBEntities.GetContext().SaveChanges();
+                        MatchDG.ItemsSource = DBEntities.GetContext().Match.ToList().
+                    OrderBy(c => c.IdMatch);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MBClass.MBError(ex);
+                }
             }
         }
 

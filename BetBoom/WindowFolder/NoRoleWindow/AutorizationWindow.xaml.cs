@@ -50,7 +50,7 @@ namespace BetBoom.WindowFolder.NoRoleWindow
                     }
                     else
                     {
-                        //context.user = user; возможно не пригодиться
+                        Context.user = user;
                         switch (user.IdRole)
                         {
                             case 1:
@@ -64,13 +64,13 @@ namespace BetBoom.WindowFolder.NoRoleWindow
                                 userMatchWindow.Show();
                                 this.Close();
                                 break;
-                            /*case 3:
-                                DirectorFolder.DirectorMapWindow
-                                    directorMapWindow =
-                                    new DirectorFolder.DirectorMapWindow();
-                                directorMapWindow.Show();
+                            case 3:
+                                DirectorFolder.StaffWindow
+                                    staffWindow =
+                                    new DirectorFolder.StaffWindow();
+                                staffWindow.Show();
                                 this.Close();
-                                break; */
+                                break;
                         }
                     }
                 }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BetBoom.ClassFolder;
+using BetBoom.DataFolder;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using BetBoom.WindowFolder.UserFolder;
 
 namespace BetBoom.WindowFolder.UserFolder
 {
@@ -22,6 +25,34 @@ namespace BetBoom.WindowFolder.UserFolder
         public UserMatchWindow()
         {
             InitializeComponent();
+            UserMathDG.ItemsSource = DBEntities.GetContext().Match.ToList().
+                OrderBy(c => c.IdMatch);
+        }
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            LoginLbl.Content = Context.user.LoginUser;
+            BalansLbl.Content = Context.user.Balans;
+        }
+
+        private void GoBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (UserMathDG.SelectedItem == null)
+            {
+                MBClass.MBError("Не выбран матч для ставки");
+            }
+            else
+            {
+                Match match = UserMathDG.SelectedItem as Match;
+                VariableClass.IdMatch = match.IdMatch;
+                new UserStafkaWindow(UserMathDG.SelectedItem as Match).Show();
+                UserMathDG.ItemsSource = DBEntities.GetContext().Match.ToList().OrderBy(c => c.IdMatch);
+
+                        DBEntities.GetContext().Match.Remove(match);
+                        DBEntities.GetContext().SaveChanges();
+                UserMathDG.ItemsSource = DBEntities.GetContext().Match.ToList().
+                    OrderBy(c => c.IdMatch);
+                this.Close();
+            }
         }
     }
 }

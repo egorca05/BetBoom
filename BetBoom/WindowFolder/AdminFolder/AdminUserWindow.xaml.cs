@@ -38,22 +38,28 @@ namespace BetBoom.WindowFolder.AdminFolder
 
         private void DelBtn_Click(object sender, RoutedEventArgs e)
         {
-            try
+            if (LoginDG.SelectedItem == null)
             {
-                User user = LoginDG.SelectedItem as User;
-                if (MBClass.QuestionMessage($"Удалить выбранный матч?"))
+                MBClass.MBError("Выберите пользователя для удаления");
+            }
+            else
+            {
+                try
                 {
-                    DBEntities.GetContext().User.Remove(user);
-                    DBEntities.GetContext().SaveChanges();
-                    LoginDG.ItemsSource = DBEntities.GetContext().User.ToList().
-                OrderBy(c => c.IdUser);
+                    User user = LoginDG.SelectedItem as User;
+                    if (MBClass.QuestionMessage($"Удалить выбранного пользователя?"))
+                    {
+                        DBEntities.GetContext().User.Remove(user);
+                        DBEntities.GetContext().SaveChanges();
+                        LoginDG.ItemsSource = DBEntities.GetContext().User.ToList().
+                    OrderBy(c => c.IdUser);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MBClass.MBError(ex);
                 }
             }
-            catch (Exception ex)
-            {
-                MBClass.MBError(ex);
-            }
-
         }
 
         private void LoginTb_TextChanged(object sender, TextChangedEventArgs e)

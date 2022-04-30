@@ -68,7 +68,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ClassFolder\Context.cs" />
     <Compile Include="ClassFolder\MBClass.cs" />
+    <Compile Include="ClassFolder\VariableClass.cs" />
     <Compile Include="DataFolder\Match.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -111,6 +113,9 @@
     <Compile Include="WindowFolder\AdminFolder\AddMatchWindow.xaml.cs">
       <DependentUpon>AddMatchWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="WindowFolder\AdminFolder\AdminEditMatchWindow.xaml.cs">
+      <DependentUpon>AdminEditMatchWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WindowFolder\AdminFolder\AdminMatchWindow.xaml.cs">
       <DependentUpon>AdminMatchWindow.xaml</DependentUpon>
     </Compile>
@@ -137,6 +142,9 @@
     </Compile>
     <Compile Include="WindowFolder\UserFolder\UserMatchWindow.xaml.cs">
       <DependentUpon>UserMatchWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WindowFolder\UserFolder\UserStafkaWindow.xaml.cs">
+      <DependentUpon>UserStafkaWindow.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -182,6 +190,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="WindowFolder\AdminFolder\AdminEditMatchWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="WindowFolder\AdminFolder\AdminMatchWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -215,6 +227,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="WindowFolder\UserFolder\UserMatchWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowFolder\UserFolder\UserStafkaWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
