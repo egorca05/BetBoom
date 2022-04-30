@@ -50,7 +50,7 @@ namespace BetBoom.WindowFolder.NoRoleWindow
                     }
                     else
                     {
-                        //context.user = user; возможно не пригодиться
+                        Context.user = user;
                         switch (user.IdRole)
                         {
                             case 1:

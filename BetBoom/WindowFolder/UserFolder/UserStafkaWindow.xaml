@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BetBoom.WindowFolder.UserFolder"
         mc:Ignorable="d"
-        Title="Ставка" Height="600" Width="800" WindowStartupLocation="CenterScreen">
+        Title="Ставка" Height="650" Width="800" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10"/>
@@ -19,19 +19,49 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="90"/>
             <RowDefinition Height="10"/>
         </Grid.RowDefinitions>
         <Image Style="{StaticResource LogoImg}" Width="200" HorizontalAlignment="Left"/>
+
         <Label Content="Матч" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"
-               Style="{StaticResource LblLogo}"/>
-        <Label Content="Против" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"
-               Style="{StaticResource LblLogo}" FontSize="30"/>
-        <StackPanel Grid.Row="2" Grid.Column="1" Grid.RowSpan="2" VerticalAlignment="Center">
-            <Label x:Name="Team1Lbl" Content="Команда 1"
-               Style="{StaticResource LblLogo}" FontSize="50"/>
-            <ToggleButton x:Name="Team1TGB"/>
+               Style="{StaticResource  LblLogo}"/>
+        <Label x:Name="SportLbl" Content="{Binding Sport.NameSport}"
+               Style="{StaticResource LblLogo}" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"/>
+
+
+        <StackPanel Grid.Row="3" Grid.Column="1" Grid.RowSpan="2" VerticalAlignment="Center">
+            <Label x:Name="Team1Lbl" Content="{Binding TeamOne.NameTeamOne}"
+               Style="{StaticResource  LblLogo}"/>
+            <Button x:Name="BetTeam1Btn" Content="Сделать ставку" Style="{StaticResource BtnActive}" Height="70"
+                    Click="BetTeam1Btn_Click"/>
         </StackPanel>
-        <Label x:Name="Team2Lbl" Content="Команда 2" Grid.Row="2" Grid.Column="2" Grid.RowSpan="2"
-               Style="{StaticResource LblLogo}" FontSize="50"/>
+        
+        <StackPanel Grid.Row="3" Grid.Column="2" Grid.RowSpan="2" VerticalAlignment="Center">
+            <Label x:Name="Team2Lbl" Content="{Binding TeamTwo.NameTeamTwo}"
+               Style="{StaticResource LblLogo}"/>
+            <Button x:Name="BetTeam2Btn" Content="Сделать ставку" Style="{StaticResource BtnActive}" Height="70"
+                    Click="BetTeam2Btn_Click"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Label  Content="Ваша ставка:"
+               Style="{StaticResource LblNormal}"/>
+            <TextBox x:Name="BetTb" Width="300"
+                     VerticalContentAlignment="Center" HorizontalContentAlignment="Center" BorderBrush="Gold"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Label  Content="Коффициэнт:"
+               Style="{StaticResource LblNormal}"/>
+            <TextBox x:Name="kof" Width="100" Text="{Binding Coefficient}" IsEnabled="False"
+                     VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+        </StackPanel>
+
+
+        <Button x:Name="ClouseBtn" Content="Отмена" Grid.Column="1" Grid.Row="7"
+                Grid.ColumnSpan="2" Style="{StaticResource BtnMenuAdmin}" Width="150"/>
     </Grid>
 </Window>

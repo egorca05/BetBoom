@@ -57,7 +57,7 @@ namespace BetBoom.WindowFolder.AdminFolder
 
         private void AddReport()
         {
-            Match match = MatchDG.SelectedItem as Match
+            Match match = LoginDG.SelectedItem as Match;
             DBEntities.GetContext().Refills.Add(new Refills()
             {
                 IdUser = Convert.ToInt32(LoginDG.SelectedItem),

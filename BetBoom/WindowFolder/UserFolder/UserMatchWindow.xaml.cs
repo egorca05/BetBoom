@@ -28,6 +28,11 @@ namespace BetBoom.WindowFolder.UserFolder
             UserMathDG.ItemsSource = DBEntities.GetContext().Match.ToList().
                 OrderBy(c => c.IdMatch);
         }
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            LoginLbl.Content = Context.user.LoginUser;
+            BalansLbl.Content = Context.user.Balans;
+        }
 
         private void GoBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -41,6 +46,12 @@ namespace BetBoom.WindowFolder.UserFolder
                 VariableClass.IdMatch = match.IdMatch;
                 new UserStafkaWindow(UserMathDG.SelectedItem as Match).Show();
                 UserMathDG.ItemsSource = DBEntities.GetContext().Match.ToList().OrderBy(c => c.IdMatch);
+
+                        DBEntities.GetContext().Match.Remove(match);
+                        DBEntities.GetContext().SaveChanges();
+                UserMathDG.ItemsSource = DBEntities.GetContext().Match.ToList().
+                    OrderBy(c => c.IdMatch);
+                this.Close();
             }
         }
     }
