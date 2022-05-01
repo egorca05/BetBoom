@@ -65,10 +65,10 @@ namespace BetBoom.WindowFolder.NoRoleWindow
                                 this.Close();
                                 break;
                             case 3:
-                                DirectorFolder.StaffWindow
-                                    staffWindow =
-                                    new DirectorFolder.StaffWindow();
-                                staffWindow.Show();
+                                DirectorFolder.ReportsWindow
+                                     reportsWindow =
+                                    new DirectorFolder.ReportsWindow();
+                                reportsWindow.Show();
                                 this.Close();
                                 break;
                         }

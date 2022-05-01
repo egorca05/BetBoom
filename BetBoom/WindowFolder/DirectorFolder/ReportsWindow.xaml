@@ -23,10 +23,9 @@
         </Grid.RowDefinitions>
         <Image Style="{StaticResource LogoImg}" Grid.Column="1" Grid.Row="1"/>
         <StackPanel Grid.Column="2" Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button x:Name="ListBtn" Content="Отчеты" Width="190" Style="{StaticResource BtnMenuAdminActive}"/>
             <Button x:Name="MatchBtn" Content="Сотрудники" Width="190" Style="{StaticResource  BtnMenuAdmin}"
                     Click="MatchBtn_Click"/>
-
-            <Button x:Name="ListBtn" Content="Отчеты" Width="190" Style="{StaticResource BtnMenuAdminActive}"/>
         </StackPanel>
 
         <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Horizontal" Grid.ColumnSpan="2" HorizontalAlignment="Center">

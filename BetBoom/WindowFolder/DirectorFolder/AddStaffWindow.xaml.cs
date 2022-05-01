@@ -31,10 +31,12 @@ namespace BetBoom.WindowFolder.DirectorFolder
             if (LoginTB.Text == String.Empty)
             {
                 MBClass.MBError("Введите логин");
+                LoginTB.Focus();
             }
             else if (PasswordTB.Text == String.Empty)
             {
                 MBClass.MBError("Введите пароль");
+                PasswordTB.Focus();
             }
             else
             {

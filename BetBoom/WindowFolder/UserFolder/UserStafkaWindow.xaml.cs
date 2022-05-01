@@ -76,6 +76,7 @@ namespace BetBoom.WindowFolder.UserFolder
             if (BetTb.Text == String.Empty)
             {
                 MBClass.MBError("Введите ставку");
+                BetTb.Focus();
             }
             else if (user.Balans < Convert.ToDecimal(BetTb.Text))
             {

@@ -38,6 +38,7 @@ namespace BetBoom.WindowFolder.AdminFolder
             else if (BalansTb.Text == String.Empty)
             {
                 MBClass.MBError("введите сумму пополнения");
+                BalansTb.Focus();
             }
             else
             {
