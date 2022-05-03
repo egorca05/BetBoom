@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BetBoom.WindowFolder.AdminFolder"
         mc:Ignorable="d"
-        Title="Редактирование матча" Height="500" Width="500" WindowStartupLocation="CenterScreen">
+        Title="Редактирование матча" Height="550" Width="550" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10"/>
