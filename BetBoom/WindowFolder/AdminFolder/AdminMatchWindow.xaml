@@ -30,7 +30,7 @@
         </StackPanel>
 
         <DataGrid x:Name="MatchDG" AutoGenerateColumns="False" 
-                      IsReadOnly="True" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2">
+                      IsReadOnly="True" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" MouseDoubleClick="UserDG_MouseDoubleClick">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="№" Binding="{Binding IdMatch}" Width="50"/>
                 <DataGridTextColumn Header="Команда №1" Binding="{Binding TeamOne.NameTeamOne}" Width="*"/>
