@@ -28,11 +28,6 @@ namespace BetBoom.WindowFolder.DirectorFolder
                 OrderBy(c => c.IdRefills);
         }
 
-        private void MatchBtn_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void LoginTb_TextChanged(object sender, TextChangedEventArgs e)
         {
             try
@@ -47,6 +42,13 @@ namespace BetBoom.WindowFolder.DirectorFolder
             {
                 MBClass.MBError(ex);
             }
+        }
+
+        private void AddBtn_Click(object sender, RoutedEventArgs e)
+        {
+            AddDataWindow addDataWindow = new AddDataWindow();
+            addDataWindow.Show();
+            this.Close();
         }
     }
 }

@@ -42,18 +42,22 @@ namespace BetBoom.WindowFolder.AdminFolder
             if(Team1CB.SelectedItem == null)
             {
                 MBClass.MBError("Выберите первую команду");
+                Team1CB.Focus();
             }
             else if (Team2CB.SelectedItem == null)
             {
                 MBClass.MBError("Выберите вторую команду");
+                Team2CB.Focus();
             }
             else if (SportCB.SelectedItem == null)
             {
                 MBClass.MBError("Выберите вид спорта");
+                SportCB.Focus();
             }
             else if (KofTB.Text == String.Empty)
             {
                 MBClass.MBError("Введите коэффициент");
+                KofTB.Focus();
             }
             else if (Team1CB.SelectedValue.ToString() == Team2CB.SelectedValue.ToString())
             {
