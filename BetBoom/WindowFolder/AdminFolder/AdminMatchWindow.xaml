@@ -1,0 +1,50 @@
+﻿<Window x:Class="BetBoom.WindowFolder.AdminFolder.AdminMatchWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BetBoom.WindowFolder.AdminFolder"
+        mc:Ignorable="d"
+        Title="Матчи" Height="800" Width="810" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="10"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="10"/>
+        </Grid.RowDefinitions>
+        <Image Style="{StaticResource LogoImg}" Grid.Column="1" Grid.Row="1"/>
+        <StackPanel Grid.Column="2" Grid.Row="1" Orientation="Horizontal">
+            <Button x:Name="MatchBtn" Content="Матчи" Width="190" Style="{StaticResource BtnMenuAdminActive}"/>
+            <Button x:Name="PayBtn" Content="Пополнение" Width="190" Style="{StaticResource BtnMenuAdmin}" 
+                    Click="PayBtn_Click"/>
+            <Button x:Name="ListBtn" Content="Пользователи" Width="190" Style="{StaticResource BtnMenuAdmin}"
+                    Click="ListBtn_Click"/>
+        </StackPanel>
+
+        <DataGrid x:Name="MatchDG" AutoGenerateColumns="False" 
+                      IsReadOnly="True" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="№" Binding="{Binding IdMatch}" Width="50"/>
+                <DataGridTextColumn Header="Команда №1" Binding="{Binding TeamOne.NameTeamOne}" Width="*"/>
+                <DataGridTextColumn Header="Команда №2" Binding="{Binding TeamTwo.NameTeamTwo}" Width="*"/>
+                <DataGridTextColumn Header="Спорт" Binding="{Binding Sport.NameSport}" Width="*"/>
+                <DataGridTextColumn Header="Коффициэнт" Binding="{Binding Coefficient}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <StackPanel Grid.Column="1" Grid.Row="3" Orientation="Horizontal" Grid.ColumnSpan="2" HorizontalAlignment="Center">
+            <Button x:Name="AddBtn" Content="Добавить" Width="190" Style="{StaticResource BtnMenuAdmin}"
+                    Click="AddBtn_Click"/>
+            <Button x:Name="DelBtn" Content="Удалить" Width="190" Style="{StaticResource BtnMenuAdmin}"
+                    Click="DelBtn_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

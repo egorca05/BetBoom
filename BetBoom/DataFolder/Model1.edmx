@@ -1,0 +1,438 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище DBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Match">
+          <Key>
+            <PropertyRef Name="IdMatch" />
+          </Key>
+          <Property Name="IdMatch" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdTeamOne" Type="int" Nullable="false" />
+          <Property Name="IdTeamTwo" Type="int" Nullable="false" />
+          <Property Name="IdSport" Type="int" Nullable="false" />
+          <Property Name="Coefficient" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Refills">
+          <Key>
+            <PropertyRef Name="IdRefills" />
+          </Key>
+          <Property Name="IdRefills" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdUser" Type="int" Nullable="false" />
+          <Property Name="Sum" Type="decimal" Precision="7" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="IdRole" />
+          </Key>
+          <Property Name="IdRole" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameRole" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sport">
+          <Key>
+            <PropertyRef Name="IdSport" />
+          </Key>
+          <Property Name="IdSport" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameSport" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TeamOne">
+          <Key>
+            <PropertyRef Name="IdTeamOne" />
+          </Key>
+          <Property Name="IdTeamOne" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameTeamOne" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TeamTwo">
+          <Key>
+            <PropertyRef Name="IdTeamTwo" />
+          </Key>
+          <Property Name="IdTeamTwo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameTeamTwo" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="IdUser" />
+          </Key>
+          <Property Name="IdUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LoginUser" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PasswodUser" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Balans" Type="decimal" Precision="7" Scale="2" Nullable="false" />
+          <Property Name="IdRole" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Match_Sport">
+          <End Role="Sport" Type="Self.Sport" Multiplicity="1" />
+          <End Role="Match" Type="Self.Match" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sport">
+              <PropertyRef Name="IdSport" />
+            </Principal>
+            <Dependent Role="Match">
+              <PropertyRef Name="IdSport" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Match_TeamOne">
+          <End Role="TeamOne" Type="Self.TeamOne" Multiplicity="1" />
+          <End Role="Match" Type="Self.Match" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TeamOne">
+              <PropertyRef Name="IdTeamOne" />
+            </Principal>
+            <Dependent Role="Match">
+              <PropertyRef Name="IdTeamOne" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Match_TeamTwo">
+          <End Role="TeamTwo" Type="Self.TeamTwo" Multiplicity="1" />
+          <End Role="Match" Type="Self.Match" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TeamTwo">
+              <PropertyRef Name="IdTeamTwo" />
+            </Principal>
+            <Dependent Role="Match">
+              <PropertyRef Name="IdTeamTwo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Refills_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Refills" Type="Self.Refills" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="IdUser" />
+            </Principal>
+            <Dependent Role="Refills">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="IdRole" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="IdRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище DBModelContainer">
+          <EntitySet Name="Match" EntityType="Self.Match" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Refills" EntityType="Self.Refills" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sport" EntityType="Self.Sport" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TeamOne" EntityType="Self.TeamOne" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TeamTwo" EntityType="Self.TeamTwo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Match_Sport" Association="Self.FK_Match_Sport">
+            <End Role="Sport" EntitySet="Sport" />
+            <End Role="Match" EntitySet="Match" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Match_TeamOne" Association="Self.FK_Match_TeamOne">
+            <End Role="TeamOne" EntitySet="TeamOne" />
+            <End Role="Match" EntitySet="Match" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Match_TeamTwo" Association="Self.FK_Match_TeamTwo">
+            <End Role="TeamTwo" EntitySet="TeamTwo" />
+            <End Role="Match" EntitySet="Match" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Refills_User" Association="Self.FK_Refills_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Refills" EntitySet="Refills" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Match">
+          <Key>
+            <PropertyRef Name="IdMatch" />
+          </Key>
+          <Property Name="IdMatch" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdTeamOne" Type="Int32" Nullable="false" />
+          <Property Name="IdTeamTwo" Type="Int32" Nullable="false" />
+          <Property Name="IdSport" Type="Int32" Nullable="false" />
+          <Property Name="Coefficient" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Sport" Relationship="Self.FK_Match_Sport" FromRole="Match" ToRole="Sport" />
+          <NavigationProperty Name="TeamOne" Relationship="Self.FK_Match_TeamOne" FromRole="Match" ToRole="TeamOne" />
+          <NavigationProperty Name="TeamTwo" Relationship="Self.FK_Match_TeamTwo" FromRole="Match" ToRole="TeamTwo" />
+        </EntityType>
+        <EntityType Name="Refills">
+          <Key>
+            <PropertyRef Name="IdRefills" />
+          </Key>
+          <Property Name="IdRefills" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdUser" Type="Int32" Nullable="false" />
+          <Property Name="Sum" Type="Decimal" Precision="7" Scale="2" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Refills_User" FromRole="Refills" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="IdRole" />
+          </Key>
+          <Property Name="IdRole" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameRole" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_User_Role" FromRole="Role" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Sport">
+          <Key>
+            <PropertyRef Name="IdSport" />
+          </Key>
+          <Property Name="IdSport" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameSport" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Match" Relationship="Self.FK_Match_Sport" FromRole="Sport" ToRole="Match" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TeamOne">
+          <Key>
+            <PropertyRef Name="IdTeamOne" />
+          </Key>
+          <Property Name="IdTeamOne" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameTeamOne" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Match" Relationship="Self.FK_Match_TeamOne" FromRole="TeamOne" ToRole="Match" />
+        </EntityType>
+        <EntityType Name="TeamTwo">
+          <Key>
+            <PropertyRef Name="IdTeamTwo" />
+          </Key>
+          <Property Name="IdTeamTwo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameTeamTwo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Match" Relationship="Self.FK_Match_TeamTwo" FromRole="TeamTwo" ToRole="Match" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="IdUser" />
+          </Key>
+          <Property Name="IdUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LoginUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PasswodUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Balans" Type="Decimal" Precision="7" Scale="2" Nullable="false" />
+          <Property Name="IdRole" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Refills" Relationship="Self.FK_Refills_User" FromRole="User" ToRole="Refills" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_User_Role" FromRole="User" ToRole="Role" />
+        </EntityType>
+        <Association Name="FK_Match_Sport">
+          <End Role="Sport" Type="Self.Sport" Multiplicity="1" />
+          <End Role="Match" Type="Self.Match" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sport">
+              <PropertyRef Name="IdSport" />
+            </Principal>
+            <Dependent Role="Match">
+              <PropertyRef Name="IdSport" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Match_TeamOne">
+          <End Role="TeamOne" Type="Self.TeamOne" Multiplicity="1" />
+          <End Role="Match" Type="Self.Match" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TeamOne">
+              <PropertyRef Name="IdTeamOne" />
+            </Principal>
+            <Dependent Role="Match">
+              <PropertyRef Name="IdTeamOne" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Match_TeamTwo">
+          <End Role="TeamTwo" Type="Self.TeamTwo" Multiplicity="1" />
+          <End Role="Match" Type="Self.Match" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TeamTwo">
+              <PropertyRef Name="IdTeamTwo" />
+            </Principal>
+            <Dependent Role="Match">
+              <PropertyRef Name="IdTeamTwo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Refills_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Refills" Type="Self.Refills" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="IdUser" />
+            </Principal>
+            <Dependent Role="Refills">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="IdRole" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="IdRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Match" EntityType="Self.Match" />
+          <EntitySet Name="Refills" EntityType="Self.Refills" />
+          <EntitySet Name="Role" EntityType="Self.Role" />
+          <EntitySet Name="Sport" EntityType="Self.Sport" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="TeamOne" EntityType="Self.TeamOne" />
+          <EntitySet Name="TeamTwo" EntityType="Self.TeamTwo" />
+          <EntitySet Name="User" EntityType="Self.User" />
+          <AssociationSet Name="FK_Match_Sport" Association="Self.FK_Match_Sport">
+            <End Role="Sport" EntitySet="Sport" />
+            <End Role="Match" EntitySet="Match" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Match_TeamOne" Association="Self.FK_Match_TeamOne">
+            <End Role="TeamOne" EntitySet="TeamOne" />
+            <End Role="Match" EntitySet="Match" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Match_TeamTwo" Association="Self.FK_Match_TeamTwo">
+            <End Role="TeamTwo" EntitySet="TeamTwo" />
+            <End Role="Match" EntitySet="Match" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Refills_User" Association="Self.FK_Refills_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Refills" EntitySet="Refills" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище DBModelContainer" CdmEntityContainer="DBEntities">
+          <EntitySetMapping Name="Match">
+            <EntityTypeMapping TypeName="DBModel.Match">
+              <MappingFragment StoreEntitySet="Match">
+                <ScalarProperty Name="IdMatch" ColumnName="IdMatch" />
+                <ScalarProperty Name="IdTeamOne" ColumnName="IdTeamOne" />
+                <ScalarProperty Name="IdTeamTwo" ColumnName="IdTeamTwo" />
+                <ScalarProperty Name="IdSport" ColumnName="IdSport" />
+                <ScalarProperty Name="Coefficient" ColumnName="Coefficient" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Refills">
+            <EntityTypeMapping TypeName="DBModel.Refills">
+              <MappingFragment StoreEntitySet="Refills">
+                <ScalarProperty Name="IdRefills" ColumnName="IdRefills" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="Sum" ColumnName="Sum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role">
+            <EntityTypeMapping TypeName="DBModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="IdRole" ColumnName="IdRole" />
+                <ScalarProperty Name="NameRole" ColumnName="NameRole" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sport">
+            <EntityTypeMapping TypeName="DBModel.Sport">
+              <MappingFragment StoreEntitySet="Sport">
+                <ScalarProperty Name="IdSport" ColumnName="IdSport" />
+                <ScalarProperty Name="NameSport" ColumnName="NameSport" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="DBModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TeamOne">
+            <EntityTypeMapping TypeName="DBModel.TeamOne">
+              <MappingFragment StoreEntitySet="TeamOne">
+                <ScalarProperty Name="IdTeamOne" ColumnName="IdTeamOne" />
+                <ScalarProperty Name="NameTeamOne" ColumnName="NameTeamOne" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TeamTwo">
+            <EntityTypeMapping TypeName="DBModel.TeamTwo">
+              <MappingFragment StoreEntitySet="TeamTwo">
+                <ScalarProperty Name="IdTeamTwo" ColumnName="IdTeamTwo" />
+                <ScalarProperty Name="NameTeamTwo" ColumnName="NameTeamTwo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="DBModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="LoginUser" ColumnName="LoginUser" />
+                <ScalarProperty Name="PasswodUser" ColumnName="PasswodUser" />
+                <ScalarProperty Name="Balans" ColumnName="Balans" />
+                <ScalarProperty Name="IdRole" ColumnName="IdRole" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
